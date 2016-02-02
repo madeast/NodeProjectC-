@@ -21,5 +21,5 @@ NodeController::~NodeController()
 void NodeController :: start()
 {
 	cout << myNode.getValue() << endl;
-	cout << stringArrayNode.getValue << endl;
+	cout << stringArrayNode.getValue() << endl;
 }

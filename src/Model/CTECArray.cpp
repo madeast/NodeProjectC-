@@ -18,13 +18,21 @@ template <class Type>
 CTECArray<Type>::CTECArray(int size)
 {
 	// TODO Auto-generated constructor stub
+	this->size = size;
+	head = nullptr;
 
+	if(size <= 0)
+	{
+		cerr << "Impossible!" << endl;
+		return;
+	}
 }
 
 template<class Type>
 CTECArray<Type>::~CTECArray()
 {
 	// TODO Auto-generated destructor stub
+
 }
 
 template<class Type>
@@ -39,6 +47,7 @@ Type* CTECArray<Type>:: get(int position)
 	//Bounds check for size and negative.
 	if(position >= size || position < 0)
 	{
+		cerr << "Don'tdo this! out of bounds!!! Doh" << endl;
 		return nullptr;
 	}
 	else
@@ -74,6 +83,4 @@ void CTECArray<Type>:: set(int position, Type value)
 }
 
 
-	int getSize();
-	Type get(int position);
-	void set(int position ,Type value);
+

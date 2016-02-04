@@ -27,7 +27,7 @@ public:
 	CTECArray(int length);
 	virtual ~CTECArray();
 	int getSize();
-	Type* get(int positoin);
+	Type* get(int position);
 	void set(int position ,Type value);
 };
 

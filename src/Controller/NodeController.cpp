@@ -9,8 +9,9 @@
 
 NodeController::NodeController()
 {
-	this->myNode.setValue(5);
-	this->stringArryaNode.setValue("words are fun");
+//	this->myNode.setValue(5);
+//	this->stringArrayNode.setValue("words are fun");
+	notHipsterInts = new CTECArray<int>(5);
 }
 
 NodeController::~NodeController()
@@ -20,6 +21,14 @@ NodeController::~NodeController()
 
 void NodeController :: start()
 {
-	cout << myNode.getValue() << endl;
-	cout << stringArrayNode.getValue() << endl;
+
+	for(int index = 0; index < notHipsterInts->getSize(); index++)
+	{
+			notHipsterInts->set(index, (23 * index));
+	}
+
+	for(int index = 0; index < notHipsterInts->getSize(); index++)
+	{
+		cout << "notHipsterInts at index " << index << " contains " << notHipsterInts->get(index) << endl;
+	}
 }

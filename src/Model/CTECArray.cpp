@@ -45,7 +45,6 @@ CTECArray<Type>::CTECArray(int size)
 		}
 	}
 
-	delete head;
 }
 
 template<class Type>
@@ -106,7 +105,7 @@ void CTECArray<Type>:: set(int position, const Type& value)
 	ArrayNode<Type> * current = head;
 	for(int spot = 0; spot <= position; spot++)
 	{
-		if(position >= size || position < 0)
+		if(position != spot )
 			{
 				 current = current->getNext();
 			}

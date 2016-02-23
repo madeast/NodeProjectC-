@@ -32,7 +32,12 @@ Type CtecList<Type>:: removeFromFront()
 	delete this->head;
 	//Set head to the new head
 	this->head = newHead;
-
 }
 
-
+template <class Type>
+Type CtecList<Type> :: removeFromEnd()
+{
+	//loop over size
+	//or
+	//loop until getNext                                                      ->getNext() == nullptr
+}

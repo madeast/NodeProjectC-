@@ -31,14 +31,27 @@ Type CtecList<Type>:: removeFromFront()
 
 	assert(size > 0);
 	//Create a pointer to what is after head.
-	ArrayNode<Type> * newHead = new ArrayNode<Type>();
+	ArrayNode<Type> * newHead;
 	newHead = head->getNext();
+
 	//Get what was in head node!
 	returnValue = head->getValue();
 	//Delete what head is pointing to
 	delete this->head;
 	//Set head to the new head
 	this->head = newHead;
+}
+
+template<class Type>
+Type CtecList<Type>:: removeFromIndex(int index)
+{
+
+	Type returnValue; //In case we need to use the value we are removing.
+
+	assert(size > 0);
+	assert(index >= 0);
+	assert(index < size);
+	assert(size > 0 && index >= 0 && index < size);
 }
 
 template <class Type>

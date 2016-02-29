@@ -1,5 +1,5 @@
 /*
- * CtecList.h
+  * CtecList.h
  *
  *  Created on: Feb 18, 2016
  *      Author: emad6932
@@ -15,6 +15,7 @@ class CtecList
 {
 private:
 	int size;
+	void calculateSize();
 	ArrayNode<Type> head;
 	ArrayNode<Type> end;
 public:

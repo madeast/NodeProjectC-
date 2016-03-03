@@ -25,6 +25,7 @@ CtecList<Type>::~CtecList()
 
 template <class Type>
 int CtecList<Type> :: getSize()
+{
 	/**
 	 * Function to return the number of nodes in the list.
 	 * Postcondition: The value of count is returned.
@@ -128,24 +129,28 @@ Type CtecList<Type> :: removeFromEnd()
 	//or
 	//loop until getNext->getNext() == nullptr
 	//Before return the variable call calculateSize().
+	assert(size >0);
+
 	Type valueToRemove;
 
-	ArrayNode<Type> * current = head;
-	while(current->getNext()->getNext() != nullptr)
+	if(size == 1)
 	{
-		current = current++;
-	}
-	current = valueToRemove;
-
-	if(current->getNext()->getNext() == nullptr)
-	{
-		delete current;
+		valueToRemove = removeFromFront();
+		end = nullptr;
 	}
 	else
 	{
+		ArrayNode<Type> * current = head;
+		for(int spot = 0; spot < size-1; spot++)
+		{
+			current = current->getNext();
+		}
+
+		valueToRemove = current->getNext()->getValue();
+		end = current;
+		delete current->getNext();
 
 	}
-
 	this->calculateSize();
 	return valueToRemove();
 }
@@ -160,17 +165,17 @@ void CtecList<Type> :: addToFront(Type value)
 
 	ArrayNode<Type> * newNode; //Pointer to create the new node.
 
-	newNode = new CtecList<Type>;
-	newNode->value = value;
-	newNode->getNext() = head;
-	head = newNode;
-	count++;
+	newNode = new ArrayNode<Type>; //Creates the new Node
+	newNode->value = value; //Stores the new item in the Node
+	newNode->getNext() = head; // Inserts newNode before first
+	head = newNode; // make first point to the actual first node
+	this->calculateSize(); // increment count
 
-	if(end == NULL)
+	if(end == NULL) // if the list was empty, newNode is also the last node in the list.
 	{
 		end = newNode;
 	}
-}
+} //end = insertFirst
 
 template <class Type>
 void CtecList<Type> :: addToEnd(Type value)
@@ -179,16 +184,41 @@ void CtecList<Type> :: addToEnd(Type value)
 	 * Function to insert newItem at the end of the list.
 	 * Postcondition: first points to the new list, newItem is
 	 * inserted at the beginning of the list, last points to
-	 * the last node in the list, and count is incremented by
-	 * 1.
+	 * the last node in the list, and count is incremented by one.
 	 */
+
+	ArrayNode<Type> * newNode;
+
+	newNode = new ArrayNode<Type>;
+	newNode->value = value;
+	newNode->getNext() = NULL;
+	if(head == NULL)
+	{
+		head = newNode;
+		end = newNode;
+		this->calculateSize();
+	}
+	else
+	{
+		end->getNext() = newNode;
+		end = newNode;
+
+		this->calculateSize();
+	}
+
+
 
 }
 
 template <class Type>
 void CtecList<Type> :: addAtIndex(int index, Type value)
 {
+	if(index == 0)
+	{
 
+	}
+
+	ArrayNode<Type> * previous, next;
 }
 
 template <class Type>
@@ -201,6 +231,9 @@ Type CtecList<Type> :: getFront()
 	 * terminates; otherwise, the last
 	 * element of the list is returned.
 	 */
+	Type returnValue;
+	Type thingToGet;
+	thingToGet = returnValue = head->getValue();
 }
 
 template <class Type>
@@ -212,6 +245,28 @@ Type CtecList<Type> :: getEnd()
 	 * Postcondition: If the list is empty, the program terminates;
 	 * 	otherwise, the first element of the list is returned.
 	 */
+
+	Type valueToGet;
+
+	if(size == 1)
+	{
+		valueToGet = getFront();
+		end = nullptr;
+	}
+	else
+	{
+		ArrayNode<Type> * current = head;
+		for(int spot = 0; spot < size-1; spot++)
+		{
+			current = current->getNext();
+		}
+
+		valueToGet = current->getNext()->getValue();
+		end = current;
+
+	}
+	this->calculateSize();
+	return valueToGet;
 }
 
 template <class Type>
@@ -224,9 +279,17 @@ Type CtecList<Type> :: getFromIndex(int index)
 	 * element of the list is returned.
 	 */
 
-	for(int index = 0; index <= 5; index++)
+	for(int index = 0; index <= size; index++)
 	{
-		return
+		return CtecList[index];
+	}
+	if(index == NULL)
+	{
+		return CtecList[index - 1];
+	}
+	else if(size == 0)
+	{
+
 	}
 }
 

@@ -278,25 +278,39 @@ Type CtecList<Type> :: getFromIndex(int index)
 	 * terminates; otherwise, the last
 	 * element of the list is returned.
 	 */
+	ArrayNode<Type> * current = head;
 
-	for(int index = 0; index <= size; index++)
-	{
-		return CtecList[index];
-	}
-	if(index == NULL)
-	{
-		return CtecList[index - 1];
-	}
-	else if(size == 0)
-	{
+	assert(index >= 0 && index < size);
 
+	for(int spot = 0; spot <= index; spot++)
+	{
+		if(index == spot)
+		{
+			return current->getValue();
+		}
 	}
 }
 
 template <class Type>
-Type set(int index, Type value)
+Type CtecList<Type> :: set(int index, Type value)
 {
 
+	ArrayNode<Type> * current = head;
+	assert(index < size && index >= 0);
+
+	for(int spot = 0; spot <= index; spot++)
+	{
+		if(index != spot)
+			{
+				 current = current->getNext();
+			}
+			else
+			{
+				current->setValue(value);
+			}
+	}
+
+	return current;
 }
 
 

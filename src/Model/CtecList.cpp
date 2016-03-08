@@ -69,6 +69,7 @@ Type CtecList<Type>:: removeFromIndex(int index)
 	assert(size > 0 && index >= 0 && index < size);
 
 	Type thingToRemove;
+	ArrayNode<Type> * current = head;
 
 	ArrayNode<Type> * previous, deleteMe, newNext;
 
@@ -84,7 +85,8 @@ Type CtecList<Type>:: removeFromIndex(int index)
 	{
 		for(int spot = 0; spot < index +1; spot++)
 		{
-
+			current = spot;
+			delete current;
 		}
 
 		this->calculateSize();
@@ -213,10 +215,20 @@ void CtecList<Type> :: addToEnd(Type value)
 template <class Type>
 void CtecList<Type> :: addAtIndex(int index, Type value)
 {
-	if(index == 0)
-	{
+	ArrayNode<Type> * current = head;
+	ArrayNode<Type> * newNode;
+	newNode = new ArrayNode<Type>;
 
-	}
+
+		assert(index >= 0 && index < size);
+
+	for(int spot = 0; spot <= index; spot++)
+		{
+			if(index == spot)
+			{
+				newNode = spot;
+			}
+		}
 
 	ArrayNode<Type> * previous, next;
 }

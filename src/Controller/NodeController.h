@@ -17,18 +17,21 @@
 #include "../Model/CTECArray.h"
 #include "../Model/CTECArray.cpp"
 #include "../Model/Timer.h"
+#include "../Model/CtecList.cpp"
 using namespace std;
 
 class NodeController
 {
 private:
 CTECArray<int> * notHipsterInts;
+CtecList<int> * numbers;
 Timer arrayTimer;
 
 
 public:
 	NodeController();
 	virtual ~NodeController();
+	void testsLists();
 	void start();
 };
 

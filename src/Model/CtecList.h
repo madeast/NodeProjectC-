@@ -16,13 +16,13 @@ class CtecList
 private:
 	int size;
 	void calculateSize();
-	ArrayNode<Type> head;
-	ArrayNode<Type> end;
+	ArrayNode<Type> * head;
+	ArrayNode<Type> * end;
 public:
 	CtecList();
 	virtual ~CtecList();
 	int getSize();
-	void addToFront(Type value);
+	void addToFront(const Type & value);
 	void addToEnd(Type value);
 	void addAtIndex(int index, Type value);
 	Type getFront();

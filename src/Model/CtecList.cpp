@@ -21,6 +21,30 @@ template <class Type>
 CtecList<Type>::~CtecList()
 {
 
+	ArrayNode<Type> * current = head;
+
+	for(int deleteCount = 0; deleteCount < size; deleteCount++)
+	{
+		ArrayNode<Type> * temp = current;
+
+		current = current->getNext();
+		head = current;
+		delete temp;
+	}
+
+	while(current->getNext() != nullptr)
+	{
+		ArrayNode<Type> * temp = current;
+
+		current = current->getNext();
+		head = current;
+		delete temp;
+	}
+
+	delete head;
+	head = nullptr;
+	end = nullptr;
+	size = 0;
 }
 
 template <class Type>
@@ -158,26 +182,13 @@ Type CtecList<Type> :: removeFromEnd()
 }
 
 template <class Type>
-void CtecList<Type> :: addToFront(Type value)
+void CtecList<Type> :: addToFront(const Type& value)
 {
-	//Function to insert newNode at the beginning of the list.
-	//Postcondition: First points to the new List, newItem is
-	//inserted at the end of the list, last points to the
-	// last node in the list, and count is incremented by 1.
+	ArrayNode<Type> * newStuff = new ArrayNode<Type>(value, head);
+	head = newStuff;
 
-	ArrayNode<Type> * newNode; //Pointer to create the new node.
-
-	newNode = new ArrayNode<Type>; //Creates the new Node
-	newNode->value = value; //Stores the new item in the Node
-	newNode->getNext() = head; // Inserts newNode before first
-	head = newNode; // make first point to the actual first node
-	this->calculateSize(); // increment count
-
-	if(end == NULL) // if the list was empty, newNode is also the last node in the list.
-	{
-		end = newNode;
-	}
-} //end = insertFirst
+	calculateSize();
+}
 
 template <class Type>
 void CtecList<Type> :: addToEnd(Type value)
@@ -189,24 +200,11 @@ void CtecList<Type> :: addToEnd(Type value)
 	 * the last node in the list, and count is incremented by one.
 	 */
 
-	ArrayNode<Type> * newNode;
+	ArrayNode<Type> * newStuff = new ArrayNode<Type>(value);
+	end->setNext(newStuff);
+	end = newStuff;
 
-	newNode = new ArrayNode<Type>;
-	newNode->value = value;
-	newNode->getNext() = NULL;
-	if(head == NULL)
-	{
-		head = newNode;
-		end = newNode;
-		this->calculateSize();
-	}
-	else
-	{
-		end->getNext() = newNode;
-		end = newNode;
-
-		this->calculateSize();
-	}
+	calculateSize();
 
 
 
@@ -224,6 +222,10 @@ void CtecList<Type> :: addAtIndex(int index, Type value)
 
 	for(int spot = 0; spot <= index; spot++)
 		{
+		while(current->getNext != NULL)
+		{
+
+		}
 			if(index == spot)
 			{
 				newNode = spot;

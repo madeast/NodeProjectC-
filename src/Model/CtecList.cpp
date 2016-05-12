@@ -292,17 +292,22 @@ Type CtecList<Type> :: getFromIndex(int index)
 	 * terminates; otherwise, the last
 	 * element of the list is returned.
 	 */
-	ArrayNode<Type> * current = head;
+	assert(this->size > 0);
 
 	assert(index >= 0 && index < size);
 
+	ArrayNode<Type> * current = head;
+	Type returnValue;
+
 	for(int spot = 0; spot <= index; spot++)
 	{
-		if(index == spot)
+		if(spot == index)
 		{
-			return current->getValue();
+			returnValue = current->getValue();
 		}
+		current = current->getNext();
 	}
+	return returnValue;
 }
 
 template <class Type>
@@ -325,6 +330,21 @@ Type CtecList<Type> :: set(int index, Type value)
 	}
 
 	return current;
+}
+
+template <class Type>
+void CtecList<Type> :: swap (int indexOne, int indexTwo)
+{
+	assert(indexOne < size && indexTwo < size);
+	ArrayNode<Type> * first = getFromIndex(indexOne);
+	ArrayNode<Type> * second = getFromIndex(indexTwo);
+	ArrayNode<Type> * temp = new ArrayNode<Type>();
+
+	temp->setValue(first->getValue());
+	first->setValue(second->getValue());
+	second->setValue(temp->getValue());
+
+	delete temp;
 }
 
 

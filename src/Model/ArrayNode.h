@@ -15,6 +15,8 @@ class ArrayNode: public Node<Type>
 {
 private:
 	ArrayNode * next;
+	void swap(int indexOne, int indexTwo);
+	void selectionSort();
 public:
 	ArrayNode();
 	ArrayNode(const Type& value);
